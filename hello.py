@@ -122,4 +122,4 @@ vardas = input("Įveskite savo vardą: ")
 metai = input("Įveskite savo amžių: ")
 metai_iki = 100 - int(metai)
 rezultatas = 2023 + metai_iki
-print(f"Sveiki, {vardas}! Jums sukaks 100 metų {rezultatas} m.")
+print(f"Sveiki, {vardas}! Jums sukaks 100 metų {rezultatas}.")
