@@ -1,31 +1,31 @@
 #pirma užduotis
-#gyvūnai = {'Čipas': 3, 'Micė': 1, 'Trepsius': 12}
-#print(gyvūnai)
+gyvūnai = {'Čipas': 3, 'Micė': 1, 'Trepsius': 12}
+print(gyvūnai)
 
 #antra užduotis
-#print(gyvūnai['Micė'])
+print(gyvūnai['Micė'])
 
 #trečia užduotis
-#gyvūnai['Beta'] = 3
-#print(gyvūnai)
+gyvūnai['Beta'] = 3
+print(gyvūnai)
 
 #ketvirta užduotis
-#gyvūnai['Beta'] = 7
-#print(gyvūnai)
+gyvūnai['Beta'] = 7
+print(gyvūnai)
 
 #penkta užduotis
-#del gyvūnai['Trepsius']
-#print(gyvūnai)
+del gyvūnai['Trepsius']
+print(gyvūnai)
 
 #šešta užduotis
-#vardai = gyvūnai.keys()
-#print(vardai)
+vardai = gyvūnai.keys()
+print(vardai)
 
 #amžius = gyvūnai.values()
-#print(amžius)
+print(amžius)
 
 #print(gyvūnai)
-#print(gyvūnai['Beta'])
+print(gyvūnai['Beta'])
 
 #specifinis_gyvūnas = gyvūnai.get('Beta')
 #print(specifinis_gyvūnas)
