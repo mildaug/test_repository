@@ -22,11 +22,9 @@ for elementas in os.listdir(dabartinis_katalogas):
 
 failo_kelias = "testas.txt"
 
-# Sukurkite failą
 with open(failo_kelias, "w") as f:
     f.write("Tai yra testinis failas.")
 
-# Patikrinkite, ar failas egzistuoja, ir trinkite jį
 if os.path.exists(failo_kelias):
     os.remove(failo_kelias)
     print(f"Failas '{failo_kelias}' ištrintas.")
