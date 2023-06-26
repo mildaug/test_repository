@@ -1,0 +1,30 @@
+CREATE TABLE IF NOT EXISTS customer (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+f_name,
+l_name,
+email);
+
+CREATE TABLE IF NOT EXISTS order_ (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+customer_id,
+date_,
+status_id
+);
+
+CREATE TABLE IF NOT EXISTS status (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name
+);
+
+CREATE TABLE IF NOT EXISTS product_order (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+order_id,
+product_id,
+quantity
+);
+
+CREATE TABLE IF NOT EXISTS product (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+name,
+price
+);

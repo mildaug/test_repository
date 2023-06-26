@@ -1,12 +1,22 @@
 import time
 import os
 import json
+import logging
+
+logging.basicConfig(
+    filename='logeris.log', 
+    encoding='UTF-8', 
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+logging.info('Programa veikia')
 
 products = {}
 
-with open('saldytuvas.json') as jason_file:
-    json_products = json.load(jason_file)  
-    products = json_products
+with open('saldytuvas.json', 'r') as json_file:
+    json_product = json.load(json_file)  
+    products = json_product
 
 def view_product_list(item_dict):  # Karolis Venckus
     print("Product List:")
@@ -23,23 +33,15 @@ def remove_if_zero(item_dict):   # Karolis Venckus
         print(f"{', '.join(empty_products)} removed from the product list.")
 
 
-# ------------------- ADD_PRODUCT -----------------------------
-# Funkcija pridėjimo į sąrašą. Jei toks produktas egzistuoja
-# prie jo prideda count reikšmę
 def add_product(product_dict, product_name, count):  # Karolis Jasadavičius
-    # add products, 
-    # if product is solid unit == kg
-    # if product is liquid unit == litres (l)
-    if product_name in product_dict:
+    try: 
         product_dict[product_name] += count
-        print(f"{product_name} count changed successfully)")
-    else:
+    except KeyError:
         product_dict[product_name] = count
-    # Pavyzdys patikrinimui su user input'ais.
-    # added_product = input("Enter product name you wish to add: ")
-    # product_count = float(input("Enter the amount you are adding: "))
-    # add_product(products, added_product, product_count)
-    # print(products)
+        print(f"{product_name} count changed successfully")
+    else:
+        print(f"{product_name} count changed successfully")
+
 
 # ------------------- REMOVE_PRODUCT --------------------------
 # Funkcija produkto išėmimui iš sąrašo
@@ -86,7 +88,6 @@ def calculate_fridge_mass(products):  # Milda Auglytė
     return items_kg
 
 
-# milk: 1, fish: 2
 def check_recipe(products):
     recipe = input("Enter the recipe in the format 'ingredient: quantity' (e.g. 'apple: 2'):\n")
     servings = int(input("Enter the number of servings:\n"))
@@ -151,10 +152,18 @@ while True:
 
     elif choice_main_menu == '2':  # add product
         os.system('cls')
-        added_product = input("Enter product name you wish to add: ")
-        product_count = float(input("Enter the amount you are adding: "))
-        add_product(products, added_product, product_count)
-        input('Smash ENTER to continue: ')
+        try:
+            added_product = input("Enter product name you wish to add: ")
+            with open("saldytuvas.json", "w") as jason_file:
+                json.dump(added_product, jason_file)
+            product_count = float(input("Enter the amount you are adding: "))
+            with open("saldytuvas.json", "w") as jason_file:
+                json.dump(added_product, jason_file)
+            json_data_product = {added_product, product_count}
+            add_product(products, added_product, product_count)
+            input('Smash ENTER to continue: ')
+        except Exception as e:
+            logging.exception("Klaida: %s", e)
 
 
     elif choice_main_menu == '3':  # remove product
